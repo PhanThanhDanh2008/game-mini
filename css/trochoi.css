@@ -1,0 +1,257 @@
+
+        /* Reset và font chính */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333333;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Container chính */
+        .game-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        /* Tiêu đề */
+        .game-title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #007acc;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0, 122, 204, 0.2);
+        }
+
+        .game-title::before {
+            content: "🎮 ";
+            font-size: 28px;
+        }
+
+        /* Bảng cờ 3x3 */
+        .game-board {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4px;
+            margin: 20px 0;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 8px;
+            background: #f9f9f9;
+        }
+
+        .cell {
+            aspect-ratio: 1;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 48px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            min-height: 80px;
+        }
+
+        .cell:hover:not(.disabled) {
+            background: #f0f0f0;
+            border-color: #007acc;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(0, 122, 204, 0.2);
+        }
+
+        .cell.disabled {
+            cursor: not-allowed;
+        }
+
+        .cell.x {
+            color: #ff4d4f;
+        }
+
+        .cell.o {
+            color: #1e90ff;
+        }
+
+        .cell.winning {
+            background: #fff7e6;
+            border-color: #52c41a;
+            animation: pulse 0.6s ease-in-out;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Trạng thái game */
+        .game-status {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 20px 0;
+            min-height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .game-status.x-turn {
+            color: #ff4d4f;
+        }
+
+        .game-status.o-turn {
+            color: #1e90ff;
+        }
+
+        .game-status.win {
+            color: #52c41a;
+            animation: bounce 0.5s ease-in-out;
+        }
+
+        .game-status.draw {
+            color: #666;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 60%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            80% { transform: translateY(-5px); }
+        }
+
+        /* Nút chơi lại */
+        .reset-btn {
+            background: #1e90ff;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px 0;
+        }
+
+        .reset-btn:hover {
+            background: #007acc;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(30, 144, 255, 0.3);
+        }
+
+        .reset-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Điểm số */
+        .score-board {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .score-item {
+            text-align: center;
+        }
+
+        .score-label {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .score-value {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .score-x {
+            color: #ff4d4f;
+        }
+
+        .score-o {
+            color: #1e90ff;
+        }
+
+        .score-draw {
+            color: #666;
+        }
+
+        /* Navigation */
+        .nav-links {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .nav-link {
+            color: #007acc;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #1e90ff;
+            text-decoration: underline;
+        }
+
+        /* Quảng cáo */
+        .ad-banner {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .game-container {
+                padding: 20px;
+                margin: 10px;
+            }
+
+            .game-title {
+                font-size: 24px;
+            }
+
+            .cell {
+                font-size: 36px;
+                min-height: 60px;
+            }
+
+            .game-status {
+                font-size: 18px;
+            }
+
+            .score-board {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    

@@ -1,0 +1,374 @@
+
+        /* Reset và font chính */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333333;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Container chính */
+        .game-container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Header */
+        .header {
+            margin-bottom: 25px;
+        }
+
+        .game-title {
+            font-size: 36px;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(102, 126, 234, 0.2);
+        }
+
+        .game-subtitle {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        /* Game controls */
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .difficulty-select {
+            padding: 8px 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .difficulty-select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .timer {
+            font-size: 18px;
+            font-weight: bold;
+            color: #667eea;
+            min-width: 80px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5a6fd8;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #f8f9fa;
+            color: #666;
+            border: 2px solid #e0e0e0;
+        }
+
+        .btn-secondary:hover {
+            background: #e9ecef;
+            border-color: #667eea;
+        }
+
+        .btn-danger {
+            background: #ff4d4f;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #ff3333;
+        }
+
+        /* Sudoku board */
+        .sudoku-board {
+            display: grid;
+            grid-template-columns: repeat(9, 1fr);
+            gap: 2px;
+            background: #333;
+            border: 3px solid #333;
+            border-radius: 8px;
+            margin: 20px 0;
+            max-width: 450px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cell {
+            aspect-ratio: 1;
+            background: white;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            min-height: 40px;
+        }
+
+        .cell:hover {
+            background: #f0f8ff;
+        }
+
+        .cell.selected {
+            background: #667eea;
+            color: white;
+        }
+
+        .cell.given {
+            background: #f8f9fa;
+            color: #333;
+            cursor: default;
+        }
+
+        .cell.given:hover {
+            background: #f8f9fa;
+        }
+
+        .cell.error {
+            background: #ffe6e6;
+            color: #ff4d4f;
+        }
+
+        .cell.hint {
+            background: #e6f7ff;
+            color: #1890ff;
+        }
+
+        /* Sub-grid borders */
+        .cell:nth-child(3n) {
+            border-right: 3px solid #333;
+        }
+
+        .cell:nth-child(n+19):nth-child(-n+27),
+        .cell:nth-child(n+46):nth-child(-n+54) {
+            border-bottom: 3px solid #333;
+        }
+
+        /* Number pad */
+        .number-pad {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            max-width: 300px;
+            margin: 20px auto;
+        }
+
+        .number-btn {
+            aspect-ratio: 1;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-height: 50px;
+        }
+
+        .number-btn:hover {
+            background: #f0f8ff;
+            border-color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        .number-btn.erase {
+            background: #ff4d4f;
+            color: white;
+            border-color: #ff4d4f;
+        }
+
+        .number-btn.erase:hover {
+            background: #ff3333;
+        }
+
+        /* Game info */
+        .game-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .info-item {
+            text-align: center;
+        }
+
+        .info-label {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .info-value {
+            font-size: 18px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        /* Success message */
+        .success-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            display: none;
+            z-index: 1000;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: successPop 0.5s ease-out;
+        }
+
+        @keyframes successPop {
+            0% {
+                transform: translate(-50%, -50%) scale(0.8);
+                opacity: 0;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+        }
+
+        .success-title {
+            font-size: 28px;
+            color: #52c41a;
+            margin-bottom: 15px;
+        }
+
+        .success-stats {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        /* Navigation */
+        .nav-links {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .nav-link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #5a6fd8;
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .game-container {
+                padding: 20px;
+                margin: 10px;
+            }
+
+            .game-title {
+                font-size: 28px;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .control-group {
+                justify-content: center;
+            }
+
+            .sudoku-board {
+                max-width: 100%;
+            }
+
+            .cell {
+                font-size: 16px;
+                min-height: 35px;
+            }
+
+            .number-pad {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .game-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        /* Overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 999;
+        }
+
+        .overlay.show {
+            display: block;
+        }
+    

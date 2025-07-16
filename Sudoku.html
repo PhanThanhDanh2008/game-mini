@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sudoku - Trò chơi Logic</title>
+<link href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;text y='.9em' font-size='90'&gt;🧩&lt;/text&gt;&lt;/svg&gt;" rel="icon"/>
+
+<link href="css/sudoku.css" rel="stylesheet"/></head>
+<body>
+<div class="game-container">
+<div class="header">
+<h1 class="game-title">🧩 Sudoku</h1>
+<p class="game-subtitle">Điền số từ 1-9 vào bảng theo quy tắc</p>
+</div>
+<div class="controls">
+<div class="control-group">
+<label for="difficulty">Độ khó:</label> 
+<select class="difficulty-select" id="difficulty">
+<option value="easy">Dễ (40-45 ô)</option>
+<option value="medium">Trung bình (46-50 ô)</option>
+<option value="hard">Khó (51-55 ô)</option>
+<option value="expert">Chuyên gia (56+ ô)</option>
+</select>
+</div>
+<div class="timer" id="timer">00:00</div>
+<div class="control-group">
+<button class="btn btn-primary" onclick="newGame()">🎮 Game mới</button>
+<button class="btn btn-secondary" onclick="showHint()">💡 Gợi ý</button>
+<button class="btn btn-danger" onclick="clearBoard()">🗑️ Xóa</button>
+</div>
+</div>
+<div class="game-info">
+<div class="info-item">
+<div class="info-label">Lỗi</div>
+<div class="info-value" id="errorCount">0</div>
+</div>
+<div class="info-item">
+<div class="info-label">Hoàn thành</div>
+<div class="info-value" id="completedCount">0/81</div>
+</div>
+<div class="info-item">
+<div class="info-label">Gợi ý còn lại</div>
+<div class="info-value" id="hintCount">3</div>
+</div>
+</div>
+<div class="sudoku-board" id="sudokuBoard">
+<!-- 81 cells sẽ được tạo bởi JavaScript -->
+</div>
+<div class="number-pad">
+<button class="number-btn" onclick="selectNumber(1)">1</button>
+<button class="number-btn" onclick="selectNumber(2)">2</button>
+<button class="number-btn" onclick="selectNumber(3)">3</button>
+<button class="number-btn" onclick="selectNumber(4)">4</button>
+<button class="number-btn" onclick="selectNumber(5)">5</button>
+<button class="number-btn" onclick="selectNumber(6)">6</button>
+<button class="number-btn" onclick="selectNumber(7)">7</button>
+<button class="number-btn" onclick="selectNumber(8)">8</button>
+<button class="number-btn" onclick="selectNumber(9)">9</button>
+<button class="number-btn erase" onclick="selectNumber(0)">✖️</button>
+</div>
+<div class="nav-links">
+<a class="nav-link" href="index.html">🎮 Trò chơi khác</a>
+</div>
+</div>
+<!-- Success Modal -->
+<div class="overlay" id="overlay"></div>
+<div class="success-message" id="successMessage">
+<div class="success-title">🎉 Chúc mừng!</div>
+<div class="success-stats" id="successStats">
+            Bạn đã hoàn thành Sudoku trong <span id="finalTime">00:00</span><br/>
+            Với <span id="finalErrors">0</span> lỗi
+        </div>
+<button class="btn btn-primary" onclick="closeSuccess()">Tiếp tục</button>
+<button class="btn btn-secondary" onclick="newGame(); closeSuccess();">Game mới</button>
+</div>
+
+<script src="js/sudoku.js"></script></body>
+</html>

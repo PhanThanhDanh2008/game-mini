@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>2048 - Trò chơi Logic</title>
+<link href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;text y='.9em' font-size='90'&gt;🎲&lt;/text&gt;&lt;/svg&gt;" rel="icon"/>
+
+<link href="css/2048.css" rel="stylesheet"/></head>
+<body>
+<div class="game-container">
+<div class="header">
+<h1 class="game-title">🎲 2048</h1>
+<p class="game-subtitle">Kết hợp các ô để tạo ra 2048!</p>
+</div>
+<div class="controls">
+<div class="control-group">
+<button class="btn btn-primary" onclick="newGame()">🎮 Game mới</button>
+<button class="btn btn-secondary" onclick="undoMove()">↶ Hoàn tác</button>
+<button class="btn btn-danger" onclick="resetGame()">🗑️ Đặt lại</button>
+</div>
+</div>
+<div class="game-info">
+<div class="info-item">
+<div class="info-label">Điểm số</div>
+<div class="info-value" id="score">0</div>
+</div>
+<div class="info-item">
+<div class="info-label">Cao nhất</div>
+<div class="info-value" id="bestScore">0</div>
+</div>
+<div class="info-item">
+<div class="info-label">Nước đi</div>
+<div class="info-value" id="moves">0</div>
+</div>
+</div>
+<div class="game-board" id="gameBoard">
+<!-- 16 tiles sẽ được tạo bởi JavaScript -->
+</div>
+<div class="controls-info">
+<h3>🎮 Cách chơi:</h3>
+<p>• Dùng phím mũi tên (← → ↑ ↓) để di chuyển ô</p>
+<p>• Trên mobile: vuốt để di chuyển</p>
+<p>• Khi hai ô có cùng số chạm nhau, chúng sẽ hợp nhất</p>
+<p>• Mục tiêu: Tạo ra ô 2048!</p>
+</div>
+<div class="nav-links">
+<a class="nav-link" href="#" onclick="showInstructions()">📖 Hướng dẫn</a>
+<a class="nav-link" href="/index.html">🎮 Trò chơi khác</a>
+</div>
+</div>
+<!-- Success Modal -->
+<div class="overlay" id="overlay"></div>
+<div class="success-message" id="successMessage">
+<div class="success-title">🎉 Chúc mừng!</div>
+<div class="success-stats" id="successStats">
+            Bạn đã đạt được 2048!<br/>
+            Điểm số: <span id="finalScore">0</span><br/>
+            Số nước đi: <span id="finalMoves">0</span>
+</div>
+<button class="btn btn-primary" onclick="closeSuccess()">Tiếp tục chơi</button>
+<button class="btn btn-secondary" onclick="newGame(); closeSuccess();">Game mới</button>
+</div>
+<!-- Game Over Modal -->
+<div class="game-over-message" id="gameOverMessage">
+<div class="game-over-title">💀 Game Over!</div>
+<div class="success-stats" id="gameOverStats">
+            Không còn nước đi!<br/>
+            Điểm số cuối: <span id="gameOverScore">0</span><br/>
+            Số nước đi: <span id="gameOverMoves">0</span>
+</div>
+<button class="btn btn-primary" onclick="newGame(); closeGameOver();">Game mới</button>
+<button class="btn btn-secondary" onclick="undoMove(); closeGameOver();">Hoàn tác</button>
+</div>
+
+<script src="js/2048.js"></script></body>
+</html>

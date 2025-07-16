@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tic-Tac-Toe - Caro Mini</title>
+<link href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;text y='.9em' font-size='90'&gt;🎮&lt;/text&gt;&lt;/svg&gt;" rel="icon"/>
+
+<link href="css/trochoi.css" rel="stylesheet"/></head>
+<body>
+<div class="game-container">
+<h1 class="game-title">Tic-Tac-Toe</h1>
+<div class="score-board">
+<div class="score-item">
+<div class="score-label">❌ Người chơi</div>
+<div class="score-value score-x" id="scoreX">0</div>
+</div>
+<div class="score-item">
+<div class="score-label">Hoà</div>
+<div class="score-value score-draw" id="scoreDraw">0</div>
+</div>
+<div class="score-item">
+<div class="score-label">⭕ Máy tính</div>
+<div class="score-value score-o" id="scoreO">0</div>
+</div>
+</div>
+<div class="game-board" id="gameBoard">
+<div class="cell" data-index="0"></div>
+<div class="cell" data-index="1"></div>
+<div class="cell" data-index="2"></div>
+<div class="cell" data-index="3"></div>
+<div class="cell" data-index="4"></div>
+<div class="cell" data-index="5"></div>
+<div class="cell" data-index="6"></div>
+<div class="cell" data-index="7"></div>
+<div class="cell" data-index="8"></div>
+</div>
+<div class="game-status" id="gameStatus">❌ Lượt của bạn</div>
+<button class="reset-btn" id="resetBtn">🔄 Chơi lại</button>
+<div class="nav-links">
+<a class="nav-link" href="/index.html">🎮 Trò chơi khác</a>
+<a class="nav-link" href="#" onclick="toggleDifficulty()">⚙️ Độ khó: <span id="difficulty">Dễ</span></a>
+</div>
+<div class="ad-banner">
+<div style="font-size: 12px; color: #999;">🎯 Quảng cáo</div>
+<div style="margin-top: 8px;">
+<strong>Thử thách bản thân!</strong><br/>
+                Chơi thêm nhiều trò chơi thú vị khác
+            </div>
+</div>
+</div>
+
+<script src="js/trochoi.js"></script></body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Memory Game - Trò chơi Logic</title>
+    <link href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;text y='.9em' font-size='90'&gt;🧠&lt;/text&gt;&lt;/svg&gt;" rel="icon" />
+    
+    <link rel="stylesheet" href="css/memory.css" />
+</head>
+
+<body>
+    <div class="game-container">
+        <div class="header">
+            <h1 class="game-title">🧠 Memory Game</h1>
+            <p class="game-subtitle">Lật thẻ và tìm các cặp giống nhau!</p>
+        </div>
+        
+        <div class="controls">
+            <div class="control-group">
+                <label for="difficulty">Độ khó:</label>
+                <select class="difficulty-select" id="difficulty" onchange="changeDifficulty()">
+                    <option value="easy">Dễ (3x2)</option>
+                    <option value="medium" selected>Trung bình (4x3)</option>
+                    <option value="hard">Khó (5x4)</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <button class="btn btn-primary" id="startBtn" onclick="startGame()">🎮 Bắt đầu</button>
+                <button class="btn btn-danger" onclick="resetGame()">🗑️ Đặt lại</button>
+            </div>
+        </div>
+
+        <div class="game-info">
+            <div class="info-item">
+                <div class="info-label">Điểm số</div>
+                <div class="info-value" id="score">0</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Cao nhất</div>
+                <div class="info-value" id="highScore">0</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Lượt chơi</div>
+                <div class="info-value" id="moves">0</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Thời gian</div>
+                <div class="info-value" id="time">0:00</div>
+            </div>
+        </div>
+
+        <div class="game-status playing" id="gameStatus">
+            🎮 Nhấn "Bắt đầu" để chơi
+        </div>
+
+        <div class="memory-board">
+            <div class="cards-grid medium" id="cardsGrid"></div>
+        </div>
+
+        <div class="game-instructions">
+            <h3>🎮 Cách chơi:</h3>
+            <p>• Nhấn vào thẻ để lật và xem hình ảnh</p>
+            <p>• Tìm các cặp thẻ có hình ảnh giống nhau</p>
+            <p>• Hoàn thành game với ít lượt chơi nhất để đạt điểm cao</p>
+            <p>• Thời gian chơi càng ít thì điểm số càng cao</p>
+        </div>
+
+        <div class="nav-links">
+            <a class="nav-link" href="#" onclick="showInstructions()">📖 Hướng dẫn</a>
+            <a class="nav-link" href="/index.html">🎮 Trò chơi khác</a>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+    <div class="success-message" id="gameWinMessage">
+        <div class="success-title">🎉 Chúc mừng!</div>
+        <div class="success-stats" id="gameWinStats">
+            Điểm số: <span id="finalScore">0</span><br />
+            Lượt chơi: <span id="finalMoves">0</span><br />
+            Thời gian: <span id="finalTime">0:00</span><br />
+            <span id="newRecord" style="display: none; color: #52c41a;">🏆 Kỷ lục mới!</span>
+        </div>
+        <button class="btn btn-primary" onclick="startGame(); closeGameWin();">Chơi lại</button>
+        <button class="btn btn-secondary" onclick="closeGameWin()">Đóng</button>
+    </div>
+
+    <script src="js/memory.js"></script>
+</body>
+</html>

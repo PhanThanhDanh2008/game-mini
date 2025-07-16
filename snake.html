@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+
+<head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>Snake - Trò chơi Logic</title>
+        <link href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;text y='.9em' font-size='90'&gt;🐍&lt;/text&gt;&lt;/svg&gt;"
+                rel="icon" />
+
+        <link href="css/snake.css" rel="stylesheet" />
+</head>
+
+<body>
+        <div class="game-container">
+                <div class="header">
+                        <h1 class="game-title">🐍 Snake</h1>
+                        <p class="game-subtitle">Ăn táo và tránh va chạm để tăng điểm!</p>
+                </div>
+                <div class="controls">
+                        <div class="control-group">
+                                <label for="difficulty">Tốc độ:</label>
+                                <select class="difficulty-select" id="difficulty" onchange="changeDifficulty()">
+                                        <option value="easy">Chậm</option>
+                                        <option selected="" value="medium">Trung bình</option>
+                                        <option value="hard">Nhanh</option>
+                                        <option value="expert">Rất nhanh</option>
+                                </select>
+                        </div>
+                        <div class="control-group">
+                                <button class="btn btn-primary" id="startBtn" onclick="startGame()">🎮 Bắt đầu</button>
+                                <button class="btn btn-secondary" disabled="" id="pauseBtn" onclick="togglePause()">⏸️
+                                        Tạm dừng</button>
+                                <button class="btn btn-danger" onclick="resetGame()">🗑️ Đặt lại</button>
+                        </div>
+                </div>
+                <div class="game-info">
+                        <div class="info-item">
+                                <div class="info-label">Điểm số</div>
+                                <div class="info-value" id="score">0</div>
+                        </div>
+                        <div class="info-item">
+                                <div class="info-label">Cao nhất</div>
+                                <div class="info-value" id="highScore">0</div>
+                        </div>
+                        <div class="info-item">
+                                <div class="info-label">Chiều dài</div>
+                                <div class="info-value" id="length">3</div>
+                        </div>
+                </div>
+                <div class="game-status playing" id="gameStatus">
+                        🎮 Nhấn "Bắt đầu" để chơi
+                </div>
+                <div class="game-board">
+                        <canvas class="game-canvas" height="400" id="gameCanvas" width="400"></canvas>
+                </div>
+                <div class="controls-info">
+                        <h3>🎮 Điều khiển:</h3>
+                        <p>• Phím mũi tên / WASD: Di chuyển rắn</p>
+                        <p>• Phím Space: Tạm dừng/Tiếp tục</p>
+                        <p>• Trên mobile: Dùng nút bên dưới</p>
+                        <div class="controls-grid">
+                                <button class="control-btn empty"></button>
+                                <button class="control-btn" onclick="changeDirection('UP')">↑</button>
+                                <button class="control-btn empty"></button>
+                                <button class="control-btn" onclick="changeDirection('LEFT')">←</button>
+                                <button class="control-btn" onclick="togglePause()">⏸️</button>
+                                <button class="control-btn" onclick="changeDirection('RIGHT')">→</button>
+                                <button class="control-btn empty"></button>
+                                <button class="control-btn" onclick="changeDirection('DOWN')">↓</button>
+                                <button class="control-btn empty"></button>
+                        </div>
+                </div>
+                <div class="nav-links">
+                        <a class="nav-link" href="#" onclick="showInstructions()">📖 Hướng dẫn</a>
+                        <a class="nav-link" href="/index.html">🎮 Trò chơi khác</a>
+                </div>
+        </div>
+        <div class="overlay" id="overlay"></div>
+        <div class="success-message" id="gameOverMessage">
+                <div class="success-title">💀 Game Over!</div>
+                <div class="success-stats" id="gameOverStats">
+                        Điểm số: <span id="finalScore">0</span><br />
+                        Chiều dài: <span id="finalLength">3</span><br />
+                        <span id="newRecord" style="display: none; color: #52c41a;">🎉 Kỷ lục mới!</span>
+                </div>
+                <button class="btn btn-primary" onclick="startGame(); closeGameOver();">Chơi lại</button>
+                <button class="btn btn-secondary" onclick="closeGameOver()">Đóng</button>
+        </div>
+
+        <script src="js/snake.js"></script>
+</body>
+
+</html>
