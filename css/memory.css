@@ -381,29 +381,107 @@
             text-align: left;
         }
 
-        /* Responsive */
+        @media (max-width: 480px) {
+    body {
+        padding: 10px;
+        align-items: flex-start;
+    }
+
+    .game-container {
+        padding: 16px;
+        margin: 10px auto;
+        max-width: 100%;
+    }
+
+    .game-title {
+        font-size: 24px;
+    }
+
+    .game-subtitle {
+        font-size: 14px;
+    }
+
+    .controls {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .control-group {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .difficulty-select,
+    .btn {
+        font-size: 13px;
+        padding: 6px 12px;
+    }
+
+    .game-info {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .info-value {
+        font-size: 16px;
+    }
+
+    .memory-board {
+        padding: 10px;
+    }
+
+    .cards-grid.hard {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 6px;
+    }
+
+    .memory-card {
+        width: 50px;
+        height: 50px;
+    }
+
+    .card-front,
+    .card-back {
+        font-size: 18px;
+    }
+
+    .game-instructions {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .success-message {
+        width: 90%;
+        padding: 25px;
+    }
+
+    .success-title {
+        font-size: 22px;
+    }
+
+    .success-stats {
+        font-size: 14px;
+    }
+
+    .nav-link {
+        display: block;
+        margin: 5px 0;
+        text-align: center;
+    }
+}
         @media (max-width: 768px) {
-            .game-container {
-                padding: 20px;
-                margin: 10px;
-            }
-
-            .game-title {
-                font-size: 28px;
-            }
-
             .controls {
                 flex-direction: column;
                 align-items: stretch;
-            }
-
-            .control-group {
-                justify-content: center;
-            }
-
-            .game-info {
-                flex-direction: column;
                 gap: 10px;
+            }
+
+            .difficulty-select,
+            .btn {
+                width: 100%;
+                font-size: 14px;
+                padding: 10px;
             }
 
             .memory-card {
@@ -411,15 +489,9 @@
                 height: 60px;
             }
 
-            .card-front, .card-back {
+            .card-front,
+            .card-back {
                 font-size: 24px;
             }
-
-            .cards-grid {
-                gap: 8px;
-            }
-
-            .memory-board {
-                padding: 15px;
-            }
-        }
+        }  
+        

@@ -372,3 +372,94 @@
             display: block;
         }
     
+        @media (max-width: 480px) {
+    body {
+        padding: 10px;
+        align-items: flex-start;
+    }
+
+    .game-container {
+        padding: 20px;
+        border-radius: 12px;
+        max-width: 100%;
+    }
+
+    .game-title {
+        font-size: 24px;
+    }
+
+    .game-subtitle {
+        font-size: 14px;
+    }
+
+    .controls {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .control-group {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .difficulty-select,
+    .btn {
+        font-size: 13px;
+        padding: 6px 10px;
+    }
+
+    .timer {
+        font-size: 16px;
+    }
+
+    .sudoku-board {
+        max-width: 100%;
+        gap: 1px;
+    }
+
+    .cell {
+        font-size: 14px;
+        min-height: 30px;
+    }
+
+    .number-pad {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 6px;
+        max-width: 100%;
+    }
+
+    .number-btn {
+        font-size: 16px;
+        min-height: 40px;
+    }
+
+    .game-info {
+        flex-direction: column;
+        gap: 10px;
+        font-size: 13px;
+    }
+
+    .info-value {
+        font-size: 16px;
+    }
+
+    .success-message {
+        width: 90%;
+        padding: 25px;
+    }
+
+    .success-title {
+        font-size: 22px;
+    }
+
+    .success-stats {
+        font-size: 14px;
+    }
+
+    .nav-link {
+        display: block;
+        margin: 5px 0;
+        text-align: center;
+    }
+}
